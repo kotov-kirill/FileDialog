@@ -132,6 +132,12 @@ public class FileDialog extends ListActivity {
                         getIntent().putExtra(RESULT_PATH,
                                 currentPath + "/" + mFileName.getText());
                         setResult(RESULT_OK, getIntent());
+
+                        if(getCurrentFocus() != null) {
+                            InputMethodManager inputMethodManager =
+                                    (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                        }
                         finish();
                     }
                 }
